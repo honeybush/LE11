@@ -21,8 +21,9 @@ class MainScreen:
 		menuLabel = Label(resto, text="Menu:")
 		menuLabel.place(x=10, y=15)
 		
-		menuScreen = Text(resto, state="disabled", width=50, height=20)
-		menuScreen.insert(0.0, "Main Dishes:\n~Lasagna\n~Vegetarian Platter\n\nDesserts:\n~Banana Split\n~Sundae\n\nDrinks:\n~Bubble Tea\n~Chocolate Milkshake")
+		menuScreen = Text(resto, width=50, height=20)
+		menuScreen.insert(1.1, "Main Dishes:\n~Lasagna\n~Vegetarian Platter\n\nDesserts:\n~Banana Split\n~Sundae\n\nDrinks:\n~Bubble Tea\n~Chocolate Milkshake")
+		menuScreen.config(state="disabled")
 		menuScreen.place(x=10, y=50)
 		
 		label_1 = Label(resto, text="Choose your order: ")
