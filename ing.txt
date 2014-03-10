@@ -1,0 +1,3 @@
+pasta = 5
+milk = 3
+tomato = 4

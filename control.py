@@ -38,16 +38,5 @@ class CC:
 			a = i + " = " + self.ing_list.get(i) + "\n"
 			f.write(a)
 		f.close()
-	def open_ing(ing, fin):
-		curr = 1
-		file = open("Inventory.txt","r")
-		for x in file:
-			if x == '\n':
-				curr = 2
-			elif curr == 1:
-				ing[x.split(":")[0].strip()] = int(x.split(":")[1].strip())
-			elif curr == 2:
-				fin[x.split(":")[0].strip()] = int(x.split(":")[1].strip())
-		file.close()
 
 cc = CC()

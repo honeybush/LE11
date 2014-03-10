@@ -74,3 +74,8 @@ class Chocolate(Ingredient):
 		self.name = "chocolate"
 		self.quantity = 5
 		self.status = "available"
+class Milk(Ingredient):
+	def __init__(self):
+		self.name = "milk"
+		self.quantity = 5
+		self.status = "available"

@@ -11,6 +11,7 @@ class MainScreen:
 		
 		root.geometry("640x480")
 		root.title("Welcome to Pygkaithon!")
+		root.resizable(0, 0)
 		
 		resto = Frame(root, height=480, width=640)
 		resto.place(x=0, y=0)
@@ -82,15 +83,16 @@ class MainScreen:
 	def kitchen(self):
 		self.ing_list = {}
 		self.ing_list = self.get_ing()
-		ingstr = str(self.ing_list)
+		ingstr = self.toString(self.ing_list)
 		self.food_list = {}
 		self.food_list = self.get_food()
-		foodstr = str(self.food_list)
+		foodstr = self.toString(self.food_list)
 		
 		kitchenScreen = Tk()
 		
 		kitchenScreen.geometry("460x320")
 		kitchenScreen.title("Chef Mode")
+		kitchenScreen.resizable(0, 0)
 		
 		kc = Frame(kitchenScreen, height=320, width=460)
 		kc.place(x=0, y=0)
@@ -113,7 +115,7 @@ class MainScreen:
 		buyinglabel.place(x=10, y=230)
 		
 		self.inglist = StringVar(kc)
-		ingchoose = ["buy", "beef", "pasta", "cheese", "tomato", "cheese", "banana", "cream", "icecream", "chocolate"]
+		ingchoose = ["buy", "beef", "pasta", "cheese", "tomato", "cheese", "banana", "cream", "icecream", "chocolate", "milk"]
 		self.inglist.set(ingchoose[0])
 		
 		m = apply(OptionMenu, (kc, self.inglist)+tuple(ingchoose))
@@ -147,6 +149,13 @@ class MainScreen:
 		kitchenScreen.mainloop()
 		
 		self.data.update_resto()
+	def toString(self, _list):
+		a = _list.keys()
+		s = ""
+		for i in a:
+			temp = _list.get(i)
+			s = s + i + " " + str(_list.get(i)) + "\n"
+		return s
 	def get_ing(self):
 		self.cc.getIng()
 		return self.cc.ing_list
