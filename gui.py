@@ -29,25 +29,48 @@ class MainScreen:
 		label_1 = Label(resto, text="Choose your order: ")
 		label_1.place(x=430, y=50)
 		
-		self.menulist = StringVar(resto)
-		self.foodlist = ["order", "a", "b", "c"]
-		self.menulist.set(self.foodlist[0])
+		m = StringVar(resto)
+		menu_list = ["vegetarian platter", "banana Split", "Sundae", "Bubble Tea", "Chocolate Milkshake", "lasagna" ]
+		_y = 80
+		for i in range(0, len(menu_list)):
+			Checkbutton(resto, text=menu_list[i-1], variable=m).place(x=430, y=_y)
+			_y = _y+30
 		
-		m = apply(OptionMenu, (resto, self.menulist)+tuple(self.foodlist))
-		m.place(x=430, y=75)
+		lasagna = StringVar(resto)
+		_num = ["Amt"]
+		for i in range(1, 11):
+			_num.append(i)
+		lasagna.set(_num[0])
+		a_1 = apply(OptionMenu, (resto, lasagna)+tuple(_num))
+		a_1.place(x=570, y=75)
 		
-		self.amt = StringVar(resto)
-		self.amtnum = ["Amt"]
-		for i in range(1, 4):
-			self.amtnum.append(i)
-		self.amt.set(self.amtnum[0])
+		vgp = StringVar(resto)
+		vgp.set(_num[0])
+		a_2 = apply(OptionMenu, (resto, vgp)+tuple(_num))
+		a_2.place(x=570, y=105)
 		
-		a = apply(OptionMenu, (resto, self.amt)+tuple(self.amtnum))
-		a.place(x=530, y=75)
+		bs = StringVar(resto)
+		bs.set(_num[0])
+		a_3 = apply(OptionMenu, (resto, bs)+tuple(_num))
+		a_3.place(x=570, y=135)
+		
+		sd = StringVar(resto)
+		sd.set(_num[0])
+		a_4 = apply(OptionMenu, (resto, sd)+tuple(_num))
+		a_4.place(x=570, y=165)
+		
+		bbt = StringVar(resto)
+		bbt.set(_num[0])
+		a_5 = apply(OptionMenu, (resto, bbt)+tuple(_num))
+		a_5.place(x=570, y=195)
+		
+		cms = StringVar(resto)
+		cms.set(_num[0])
+		a_6 = apply(OptionMenu, (resto, cms)+tuple(_num))
+		a_6.place(x=570, y=225)
 		
 		order = Button(resto, text="Order", command=self.giveOrder)
-		order.place(x=430, y=130)
-
+		order.place(x=430, y=300)
 	def giveOrder(self):
 		foodOrder = self.menulist.get()
 		amtOrder = self.amt.get()
