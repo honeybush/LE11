@@ -77,12 +77,14 @@ class MainScreen:
 		cookedlabel = Label(kc, text="Food")
 		cookedlabel.place(x=230, y=10)
 		
-		ingtext = Text(kc, state="disabled", width=20, height=10)
+		ingtext = Text(kc, width=20, height=10)
 		ingtext.place(x=10, y=50)
-		ingtext.insert(0.0, ingstr)
-		foodtext = Text(kc, state="disabled", width=20, height=10)
+		ingtext.insert(1.1, ingstr)
+		ingtext.config(state="disabled")
+		foodtext = Text(kc, width=20, height=10)
 		foodtext.place(x=230, y=50)
-		foodtext.insert(0.0, foodstr)
+		foodtext.insert(1.1, foodstr)
+		foodtext.config(state="disabled")
 		
 		buyinglabel = Label(kc, text="Buy:")
 		buyinglabel.place(x=10, y=230)
