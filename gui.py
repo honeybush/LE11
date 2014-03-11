@@ -5,8 +5,6 @@ import model
 class MainScreen:
 	def __init__(self, root):
 		self.cc = control.CC() 
-	
-		#self.menu = "YEY"
 		self.ordered = {}
 		
 		root.geometry("640x480")

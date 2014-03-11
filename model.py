@@ -22,10 +22,10 @@ class Data:
 		self.init_ing()
 	def addIng(self, ing, n):
 		self.inglist[ing] = self.inglist(ing) + n
-		self.set_int()
+		self.set_ing()
 	def redIng(self, ing, n):
 		self.inglist[ing] = self.inglist(ing) - n
-		self.set_int()
+		self.set_ing()
 	def addFood(self, food):
 		self.foodlist[food] = self.foodlist(food) - 3
 		self.set_food()

@@ -22,7 +22,10 @@ class CC:
 	def giveAviIng(self):
 		print "-" #if ing_list value not 0 then add to list
 	def buyIng(self):
+		self.data.inglist = self.ing_list
 		self.data.addIng(self.order_i.get("Ingredient"), self.order_i.get("Amount"))
+		self.getIng()
+		self.update_ing()
 	def cook(self):
 		print "-" #fix this with classes of food later
 	def update_resto(self):
