@@ -81,10 +81,10 @@ class MainScreen:
 	def kitchen(self):
 		self.ing_list = {}
 		self.ing_list = self.get_ing()
-		ingstr = self.toString(self.ing_list)
+		self.ingstr = self.toString(self.ing_list)
 		self.food_list = {}
 		self.food_list = self.get_food()
-		foodstr = self.toString(self.food_list)
+		self.foodstr = self.toString(self.food_list)
 		
 		kitchenScreen = Tk()
 		
@@ -102,11 +102,11 @@ class MainScreen:
 		
 		ingtext = Text(kc, width=20, height=10)
 		ingtext.place(x=10, y=50)
-		ingtext.insert(1.1, ingstr)
+		ingtext.insert(1.1, self.ingstr)
 		ingtext.config(state="disabled")
 		foodtext = Text(kc, width=20, height=10)
 		foodtext.place(x=230, y=50)
-		foodtext.insert(1.1, foodstr)
+		foodtext.insert(1.1, self.foodstr)
 		foodtext.config(state="disabled")
 		
 		buyinglabel = Label(kc, text="Buy:")
@@ -145,8 +145,9 @@ class MainScreen:
 		ok_cook.place(x=270, y=260)
 		
 		kitchenScreen.mainloop()
-		
-		self.cc.update_resto()
+	def fix(self):
+		self.ingstr = self.toString(self.ing_list)
+		self.foodstr = self.toString(self.food_list)
 	def toString(self, _list):
 		a = _list.keys()
 		s = ""
@@ -167,6 +168,7 @@ class MainScreen:
 		self.ordered_i["Ingredient"] = ingorder
 		self.ordered_i["Amount"] = amtOrder
 		self.cc.order_i = self.sendOrder_i()
+		self.fix()
 	def sendOrder_i(self):
 		return self.ordered_i
 	def cook(self):
@@ -175,6 +177,7 @@ class MainScreen:
 		self.food2cook["Food"] = foodcook
 		self.cc.cookOrder = self.send2cook()
 		print self.cc.cookOrder
+		self.fix()
 	def send2cook(self):
 		return self.food2cook
 	
