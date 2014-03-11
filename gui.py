@@ -146,7 +146,7 @@ class MainScreen:
 		
 		kitchenScreen.mainloop()
 		
-		self.data.update_resto()
+		self.cc.update_resto()
 	def toString(self, _list):
 		a = _list.keys()
 		s = ""

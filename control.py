@@ -11,8 +11,6 @@ class CC:
 		self.order_i = {}
 		self.cookOrder = {}
 		self.data = model.Data()
-	def giveMenu(self):
-		print "-" #get info from self.giveAviFood then format to string then send to gui
 	def getIng(self):
 		self.ing_list = self.data.inglist
 	def getFood(self):
@@ -32,13 +30,12 @@ class CC:
 		self.getIng()
 		self.getFood()
 		self.update_ing()
-		self.giveMenu()
 	def update_ing(self):
 		keys = {}
 		keys = self.ing_list.keys()
 		f = open("ing.txt", "w")
 		for i in keys:
-			a = i + " = " + self.ing_list.get(i) + "\n"
+			a = i + " = " + str(self.ing_list.get(i)) + "\n"
 			f.write(a)
 		f.close()
 
