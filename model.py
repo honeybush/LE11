@@ -1,9 +1,12 @@
 from Tkinter import*
+import factory
 
 class Data:
 	def __init__(self):
-		self.inglist = {"beef":0, "pasta":0, "cheese":0, "tomato":0, "leaves":0, "banana":0, "cream":0, "icecream":0, "chocolate":0, "milk":0}
-		self.foodlist = {"lasagna":0, "vegplatter":0, "bananasplit":0, "sundae":0, "bbt":0, "chocomilkshake":0}
+		#self.inglist = {"beef":0, "pasta":0, "cheese":0, "tomato":0, "leaves":0, "banana":0, "cream":0, "icecream":0, "chocolate":0, "milk":0}
+		#self.foodlist = {"lasagna":0, "vegplatter":0, "bananasplit":0, "sundae":0, "bbt":0, "chocomilkshake":0}
+		self.inglist = factory.Factory("ing")
+		self.foodlist = factory.Factory("food")
 		self.init_ing()
 	def addIng(self, ing, n):
 		self.inglist[ing] = self.inglist(ing) + n
