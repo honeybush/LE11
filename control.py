@@ -19,8 +19,12 @@ class CC:
 			for j in self.ing_list:
 				if k == j.name:
 					j.amt = j.amt + self.order_i.get(k)
-	def giveFood(self): #give the food cooked to model
-		print "-"
+	def giveFood(self, food): #give the food cooked to model
+		k = food.keys()
+		for i in k:
+			for j in self.food_list:
+				if k == j.name:
+					j.amt = j.amt + food.get(k)
 	def getFood(self): #takes food from model. If not enough food, calls cook
 		k = self.order_i.keys()
 		temp = {}
@@ -36,9 +40,9 @@ class CC:
 				n = 0
 		self.cook(temp)
 	def buyIng(self): #process stuff
-		self.data.inglist = self.ing_list
-		self.data.addIng(self.order_i.get("Ingredient"), self.order_i.get("Amount"))
 		self.getIng()
+		self.data.addIng(self.order_i.get("Ingredient"), self.order_i.get("Amount"))
+		self.giveIng()
 		self.update_ing()
 	def cook(self, food): #threading here. Cooks the food.
 		n = 0
