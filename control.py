@@ -42,14 +42,18 @@ class CC:
 		self.getFood()
 		self.update_ing()
 	def update_ing(self): #updates the text file for ingredients
-		keys = {}
-		keys = self.ing_list.keys()
+		self.getIng()
 		f = open("ing.txt", "w")
-		for i in keys:
-			a = i + " = " + str(self.ing_list.get(i)) + "\n"
+		for i in self.ing_list:
+			a = i + " = " + str(self.ing_list.amt) + "\n"
 			f.write(a)
 		f.close()
 	def update_food(self): #updates the text file for cooked food
-		print "-"
+		self.getFood()
+		f = open("fin.txt", "w")
+		for i in self.food_list:
+			a = i + ":" + str(self.food_list.amt) + "\n"
+			f.write(a)
+		f.close()
 
 cc = CC()
