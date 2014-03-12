@@ -7,8 +7,9 @@ class CC:
 		self.food_list = []
 		self.order_f = {}
 		self.order_i = {}
-		self.cookOrder = {}
 		self.data = model.Data()
+		self.getIng()
+		self.getFood()
 	def getIng(self):
 		self.ing_list = self.data.inglist
 	def getFood(self):
@@ -19,6 +20,7 @@ class CC:
 			for j in self.ing_list:
 				if k == j.name:
 					j.amt = j.amt + self.order_i.get(k)
+		self.update_ing()
 	def giveFood(self, food): #give the food cooked to model
 		k = food.keys()
 		for i in k:
@@ -43,6 +45,7 @@ class CC:
 			for m in self.food_list:
 				if l == m.name:
 					m.amt = m.amt - self.order_f.get(l)
+		self.update_food()
 	def buyIng(self): #process stuff
 		self.getIng()
 		self.data.addIng(self.order_i.get("Ingredient"), self.order_i.get("Amount"))
@@ -69,6 +72,7 @@ class CC:
 		self.getIng()
 		self.getFood()
 		self.update_ing()
+		self.update_food()
 	def update_ing(self): #updates the text file for ingredients
 		self.getIng()
 		f = open("ing.txt", "w")
