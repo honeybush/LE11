@@ -1,0 +1,16 @@
+Tomato:5
+Cheese:5
+Beef:5
+Leaves:5
+Chocolate:5
+Pasta:5
+Banana:5
+Ice Cream:5
+Cream:5
+
+Chocolate Milkshake:0
+Sundae:0
+Banana Split:0
+Lasagna:0
+Vegetarian Platter:0
+Bubble Tea:0

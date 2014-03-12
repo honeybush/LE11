@@ -1,3 +1,9 @@
-tomato = 4
-cheese = 2
-beef = 0
+Pasta=5
+Milk=3
+Tomato=4
+Cheese=5
+Beef=5
+Leaves=5
+Chocolate=5
+Banana=5
+Cream=5

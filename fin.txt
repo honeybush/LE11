@@ -1,0 +1,6 @@
+Chocolate Milkshake:0
+Sundae:0
+Banana Split:0
+Lasagna:0
+Vegetarian Platter:1
+Bubble Tea:2

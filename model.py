@@ -4,22 +4,6 @@ class Data:
 	def __init__(self):
 		self.inglist = {"beef":0, "pasta":0, "cheese":0, "tomato":0, "leaves":0, "banana":0, "cream":0, "icecream":0, "chocolate":0, "milk":0}
 		self.foodlist = {"lasagna":0, "vegplatter":0, "bananasplit":0, "sundae":0, "bbt":0, "chocomilkshake":0}
-		self.beef = 0
-		self.pasta = 0
-		self.cheese = 0
-		self.tomato = 0
-		self.leaves = 0
-		self.banana = 0
-		self.cream = 0
-		self.icecream = 0
-		self.chocolate = 0
-		self.lasagna= 0
-		self.vegplatter = 0
-		self.bananasplit = 0
-		self.sundae = 0
-		self.bbt = 0
-		self.chocomilkshake = 0
-		self.milk = 0
 		self.init_ing()
 	def addIng(self, ing, n):
 		self.inglist[ing] = self.inglist(ing) + n
@@ -63,5 +47,4 @@ class Data:
 		self.cream = self.inglist.get("cream", 0)
 		self.icecream = self.inglist.get("icecream", 0)
 		self.chocolate = self.inglist.get("chocolate", 0)
-
 model = Data()

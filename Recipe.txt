@@ -1,0 +1,24 @@
+Lasagna:Main Course
+	Beef:2
+	Pasta:1
+	Cheese:2
+	Tomato:2
+Vegetarian Platter:Main Course
+	Tomato:1
+	Leaves:1
+	Cheese:1
+Banana Split:Dessert
+	Banana:1
+	Cream:1
+	Ice Cream:3
+Sundae:Dessert
+	Ice Cream:2
+	Chocolate:2
+	Cream:1
+Bubble Tea:Drinks
+	Leaves:2
+	Cream:1
+Chocolate Milkshake:Drinks
+	Chocolate:3
+	Ice Cream:1
+	Cream:1
