@@ -45,8 +45,19 @@ class CC:
 		self.giveIng()
 		self.update_ing()
 	def cook(self, food): #threading here. Cooks the food.
-		n = 0
-		print "Cooking your food. Please wait for" + str(n) + "seconds"
+		k = food.keys()
+		cookTime = {}
+		t = 0
+		for i in k:
+			for j in self.food_list:
+				if i == j.name:
+					cookTime[i] = food.get(i) * j.timeCooked
+		for l in cookTime.keys():
+			if t > cookTime.get(l):
+				t = cookTime.get(l)
+		print "Cooking your food. Please wait for" + str(t) + "seconds"
+		a = Timer(float(t), self.giveFood)
+		a.start()
 	def update_resto(self): #updates everything?
 		self.getIng()
 		self.getFood()
