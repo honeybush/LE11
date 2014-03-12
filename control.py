@@ -24,21 +24,25 @@ class CC:
 		for i in k:
 			for j in self.food_list:
 				if k == j.name:
-					j.amt = j.amt + food.get(k)
+					j.amt = j.amt + (food.get(k)*3)
 	def getFood(self): #takes food from model. If not enough food, calls cook
-		k = self.order_i.keys()
+		k = self.order_f.keys()
 		temp = {}
 		n = 0
 		for i in k:
-			for j in self.ing_list:
+			for j in self.food_list:
 				if i == j.name:
-					if self.order_i.get(k) > j.amt:
-						n = self.order_i.get(k)/3
-						if self.order_i.get(k)%3 > j.amt:
+					if self.order_f.get(k) > j.amt:
+						n = self.order_f.get(k)/3
+						if self.order_f.get(k)%3 > j.amt:
 							n = n+1
 					temp[i] = n
 				n = 0
 		self.cook(temp)
+		for l in k:
+			for m in self.food_list:
+				if l == m.name:
+					m.amt = m.amt - self.order_f.get(l)
 	def buyIng(self): #process stuff
 		self.getIng()
 		self.data.addIng(self.order_i.get("Ingredient"), self.order_i.get("Amount"))
@@ -56,8 +60,11 @@ class CC:
 			if t > cookTime.get(l):
 				t = cookTime.get(l)
 		print "Cooking your food. Please wait for" + str(t) + "seconds"
-		a = Timer(float(t), self.giveFood)
+		a = Timer(float(t), self.startTime)
 		a.start()
+		self.giveFood(food)
+	def startTime(self):
+		pass
 	def update_resto(self): #updates everything?
 		self.getIng()
 		self.getFood()
