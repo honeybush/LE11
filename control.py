@@ -21,22 +21,28 @@ class CC:
 					j.amt = j.amt + self.order_i.get(k)
 	def giveFood(self): #give the food cooked to model
 		print "-"
-	def getFood(self, n): #takes food from model. If not enough food, calls cook
+	def getFood(self): #takes food from model. If not enough food, calls cook
 		k = self.order_i.keys()
+		temp = {}
+		n = 0
 		for i in k:
 			for j in self.ing_list:
-				if k == j.name:
-					if n > j.amt:
-						self.cook(k)
-					else:
-						j.amt = j.amt - self.order_i.get(k)
+				if i == j.name:
+					if self.order_i.get(k) > j.amt:
+						n = self.order_i.get(k)/3
+						if self.order_i.get(k)%3 > j.amt:
+							n = n+1
+					temp[i] = n
+				n = 0
+		self.cook(temp)
 	def buyIng(self): #process stuff
 		self.data.inglist = self.ing_list
 		self.data.addIng(self.order_i.get("Ingredient"), self.order_i.get("Amount"))
 		self.getIng()
 		self.update_ing()
 	def cook(self, food): #threading here. Cooks the food.
-		print "-"
+		n = 0
+		print "Cooking your food. Please wait for" + str(n) + "seconds"
 	def update_resto(self): #updates everything?
 		self.getIng()
 		self.getFood()

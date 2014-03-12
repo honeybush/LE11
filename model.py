@@ -1,53 +1,64 @@
-from Tkinter import*
-import factory
-
-class Data:
-	def __init__(self):
-		#self.inglist = {"beef":0, "pasta":0, "cheese":0, "tomato":0, "leaves":0, "banana":0, "cream":0, "icecream":0, "chocolate":0, "milk":0}
-		#self.foodlist = {"lasagna":0, "vegplatter":0, "bananasplit":0, "sundae":0, "bbt":0, "chocomilkshake":0}
-		self.inglist = factory.Factory("ing")
-		self.foodlist = factory.Factory("food")
-		self.init_ing()
-	def addIng(self, ing, n):
-		self.inglist[ing] = self.inglist(ing) + n
-		self.set_ing()
-	def redIng(self, ing, n):
-		self.inglist[ing] = self.inglist(ing) - n
-		self.set_ing()
-	def addFood(self, food):
-		self.foodlist[food] = self.foodlist(food) - 3
-		self.set_food()
-	def redFood(self, food, n):
-		self.foodlist[food] = self.foodlist(food) - n
-		self.set_food()
-	def init_ing(self):
-		f = open("ing.txt", "r")
-		s = []
-		a = ""
-		for line in f:
-			a = line
-			a = a.split(" ")
-			s.append(a)
-		for i in s:
-			i[2] = i[2].rstrip("\n")
-			self.inglist[i[0]] = i[2]
-		f.close
-		self.set_ing()
-	def set_food(self):
-		self.lasagna = self.foodlist.get("lasagna", 0)
-		self.vegplatter = self.foodlist.get("vegplatter", 0)
-		self.bananasplit = self.foodlist.get("bananasplit", 0)
-		self.sundae = self.foodlist.get("sundae", 0)
-		self.bbt = self.foodlist.get("bbt", 0)
-		self.chocomilkshake = self.foodlist.get("chocomilkshake", 0)
-	def set_ing(self):
-		self.beef = self.inglist.get("beef", 0)
-		self.pasta = self.inglist.get("pasta", 0)
-		self.cheese = self.inglist.get("cheese", 0)
-		self.tomato = self.inglist.get("tomato", 0)
-		self.leaves = self.inglist.get("leaves", 0)
-		self.banana = self.inglist.get("banana", 0)
-		self.cream = self.inglist.get("cream", 0)
-		self.icecream = self.inglist.get("icecream", 0)
-		self.chocolate = self.inglist.get("chocolate", 0)
-model = Data()
+class Model():
+    def __init__(self):
+        self.inglist = Factory('ing').ret_comp()
+        self.foodlist = Factory('food').ret_comp()
+        
+class Factory():
+    def __init__(self, a):
+        if a == 'ing':
+            self.comp = self.open_Ing()
+        else:
+            self.comp = self.open_FoodRecipe()
+    def ret_comp(self):
+        return self.comp
+    def open_Ing(self):
+        list = []
+        file = open('ing.txt', 'r')
+        for x in file:
+            x = x.split('=')
+            list.append(Ingredient(x[0], x[1]))
+        file.close()
+        return list
+    def open_FoodRecipe(self):
+        list = []
+        file = open('RecipeV2.txt', 'r')
+        for x in file:
+            try:
+                if "\t" not in x:
+                    list.append(temp)
+                    temp = Food(x.split(':')[0].strip(), self.getAmt(x.split(':')[0].strip()))
+                    temp.type = x.split(':')[1].strip()
+                    temp.timeCooked = int(x.split(':')[2].strip())
+                else:
+                    temp.ings[x.split(":")[0].strip()]= int(x.split(":")[1].strip())
+            except UnboundLocalError:
+                temp = Food(x.split(':')[0].strip(), self.getAmt(x.split(':')[0].strip()))
+                temp.type = x.split(':')[1].strip()
+                temp.timeCooked = int(x.split(':')[2].strip())
+        list.append(temp)
+        file.close()
+        return list
+    def getAmt(self, name):
+        file = open('fin.txt', 'r')
+        for x in file:
+            if x.split(':')[0].strip() == name:
+                return int(x.split(':')[1].strip())
+class Ingredient():
+    def __init__(self, name, amt):
+        self.name = name
+        self.amt = amt
+class Food(Ingredient):
+    def __init__(self, name, amt):
+        Ingredient.__init__(self, name, amt)
+        self.type = ''
+        self.timeCooked = 0
+        self.ings = {}
+'''
+a = Model()
+for x in a.foodlist:
+    print x.name
+    print 'amt: ' + str(x.amt)
+    print 'type: ' + x.type
+    print 'time: ' + str(x.timeCooked)
+    print x.ings
+'''
