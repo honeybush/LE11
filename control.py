@@ -1,13 +1,22 @@
 from Tkinter import*
+from thread import *
+from time import *
 import model
 
+class Timer():
+	def __init(self, time, com, food):
+		self.thread = thread(com, (food))
+		self.delay = time
+	def run(self):
+		sleep(self.delay)
+		self.thread.start()
 class CC:
 	def __init__(self):
 		self.ing_list = []
 		self.food_list = []
 		self.order_f = {}
 		self.order_i = {}
-		self.data = model.Data()
+		self.data = model.Model()
 		self.getIng()
 		self.getFood()
 	def getIng(self):
@@ -63,11 +72,11 @@ class CC:
 			if t > cookTime.get(l):
 				t = cookTime.get(l)
 		print "Cooking your food. Please wait for" + str(t) + "seconds"
-		a = Timer(float(t), self.startTime)
-		a.start()
-		self.giveFood(food)
-	def startTime(self):
-		pass
+		a = Timer(float(t), self.giveFood, food)
+		#a.start()
+		#self.giveFood(food)
+	#def startTime(self):
+		#pass
 	def update_resto(self): #updates everything?
 		self.getIng()
 		self.getFood()
